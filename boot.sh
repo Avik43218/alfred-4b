@@ -6,4 +6,4 @@ CUDNN_PATH=$(python3 -c "import nvidia.cudnn.lib as lib; print(list(lib.__path__
 export LD_LIBRARY_PATH="$CUBLAS_PATH:$CUDNN_PATH:$LD_LIBRARY_PATH"
 
 echo "[ LAUNCHING VICTUS MAINFRAME... ]"
-python3 jarvis.py
+python3 source/jarvis.py
