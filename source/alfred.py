@@ -40,7 +40,7 @@ def get_rms(data):
     sum_squares = sum(s**2 for s in shorts)
     return math.sqrt(sum_squares / count) if count > 0 else 0
 
-MIC_THRESHOLD = 800  
+MIC_THRESHOLD = 850
 SILENCE_LIMIT = 2
 
 ctk.set_appearance_mode("dark")
@@ -90,7 +90,7 @@ def append_chat(speaker, text):
 
 def jarvis_speak(text):
     subprocess.run(
-        ["edge-playback", "--voice", "en-US-AndrewNeural", "--text", text],
+        ["edge-playback", "--voice", "en-US-RogerNeural", "--text", text],
         stderr=subprocess.DEVNULL
     )
 
@@ -117,9 +117,9 @@ def run_jarvis():
     chat_log.insert("end", "="*80 + "\n\n")
     chat_log.configure(state="disabled")
     
-    app.after(0, append_chat, "ALFRED", "Systems online. What's good, boss?")
+    app.after(0, append_chat, "ALFRED", "Systems online. Welcome aboard, Sir!")
     app.after(0, update_status, "[ SPEAKING ]", "#00ff00")
-    jarvis_speak("Systems online. What's good, boss?")
+    jarvis_speak("Systems online. Welcome aboard, Sir!")
     
     chat_history = []
     temp_audio_path = "temp_alfred_audio.wav"
