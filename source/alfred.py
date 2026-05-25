@@ -90,7 +90,7 @@ def append_chat(speaker, text):
 
 def jarvis_speak(text):
     subprocess.run(
-        ["edge-playback", "--voice", "en-US-AvaNeural", "--text", text],
+        ["edge-playback", "--voice", "en-US-AndrewNeural", "--text", text],
         stderr=subprocess.DEVNULL
     )
 
