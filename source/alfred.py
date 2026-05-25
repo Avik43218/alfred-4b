@@ -81,20 +81,20 @@ def update_status(text, color):
 def append_chat(speaker, text):
     chat_log.configure(state="normal")
     if speaker == "USER":
-        chat_log.insert("end", f"> USER INPUT: {text.title()}\n", "user")
+        chat_log.insert("end", f"> USER INPUT: {text.capitalize()}\n", "user")
     else:
         chat_log.insert("end", f"A.L.F.R.E.D: {text}\n\n", "ai")
     
     chat_log.configure(state="disabled")
     chat_log.yview("end")
 
-def jarvis_speak(text):
+def alfred_speak(text):
     subprocess.run(
         ["edge-playback", "--voice", "en-US-RogerNeural", "--text", text],
         stderr=subprocess.DEVNULL
     )
 
-def run_jarvis():
+def run_alfred():
     app.after(0, update_status, "[ BOOTING... ]", "#ff00ff")
     whisper_model = WhisperModel("base.en", device="cuda", compute_type="float16")
     
@@ -119,7 +119,7 @@ def run_jarvis():
     
     app.after(0, append_chat, "ALFRED", "Systems online. Welcome aboard, Sir!")
     app.after(0, update_status, "[ SPEAKING ]", "#00ff00")
-    jarvis_speak("Systems online. Welcome aboard, Sir!")
+    alfred_speak("Systems online. Welcome aboard, Sir!")
     
     chat_history = []
     temp_audio_path = "temp_alfred_audio.wav"
@@ -229,11 +229,11 @@ def run_jarvis():
             if clean_reply:
                 app.after(0, append_chat, "ALFRED", clean_reply)
                 app.after(0, update_status, "[ BROADCASTING... ]", "#00ff00")
-                jarvis_speak(clean_reply)
+                alfred_speak(clean_reply)
             
         except Exception as e:
             app.after(0, append_chat, "SYSTEM", f"RUNTIME ERROR: {e}")
 
-threading.Thread(target=run_jarvis, daemon=True).start()
+threading.Thread(target=run_alfred, daemon=True).start()
 
 app.mainloop()
