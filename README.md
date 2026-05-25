@@ -15,7 +15,7 @@ source .venv/bin/activate
 
 #### 2. Install pre-requisites
 ```bash
-pip install requirements.txt
+pip install -r requirements.txt
 ```
 (Also make sure that `ollama` server is installed on your system. Then install the `qwen3:4b-instruct` model. You may also need to install the `nvidia.cublas` library, if not already.)
 
