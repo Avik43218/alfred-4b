@@ -30,7 +30,8 @@ COMMAND_DECK = {
     "browser": "brave-browser",
     "terminal": "konsole",
     "files": "dolphin",
-    "calculator": "kcalc"
+    "calculator": "kcalc",
+    "spotify": "spotify"
 }
 
 def get_rms(data):
