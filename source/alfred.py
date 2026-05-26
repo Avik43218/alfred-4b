@@ -12,17 +12,6 @@ import math
 import re
 import os
 
-try:
-    import nvidia.cublas.lib
-    import nvidia.cudnn.lib
-    
-    cublas_dir = list(nvidia.cublas.lib.__path__)[0]
-    cudnn_dir = list(nvidia.cudnn.lib.__path__)[0]
-    
-    os.environ['LD_LIBRARY_PATH'] = f"{cublas_dir}:{cudnn_dir}:" + os.environ.get('LD_LIBRARY_PATH', '')
-except Exception as e:
-    print(f"[ CUDA PATH INJECT FAILED: {e} ]")
-
 from faster_whisper import WhisperModel
 from ddgs import DDGS
 
