@@ -1,8 +1,6 @@
-# Virtual environment
-jarvis_env/
-
-# Scripts
-ui.py
-
-# Modelffile
-Modelfile_backup
+.venv/
+.models/
+__pycache__/
+logs/
+assets/
+target/
